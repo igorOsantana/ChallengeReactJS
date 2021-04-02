@@ -3,16 +3,10 @@ import styled from 'styled-components';
 export const ContainerMain = styled.div `
     width: 100vw;
     height: 100vh;
-    background-color: #000000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    input, button {
-        width: 20rem;
-        font-weight: bolder;
-    }
 `;
 
 export const IconGitHub = styled.div `
@@ -23,9 +17,21 @@ export const IconGitHub = styled.div `
     color: #FFC23D;
 `;
 
+export const FormLogin = styled.form `
+
+    input, button {
+        display: flex;
+        width: 20rem;
+        font-weight: bolder;
+        justify-content: center;
+        align-items: center;
+    }
+`;
+
 export const Feedback = styled.div `
-    display: none;
+    display: flex;
+    justify-content: flex-end;
     color: #f00;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bolder;
 `;
