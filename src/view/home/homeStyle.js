@@ -6,8 +6,5 @@ export const ContainerMain = styled.div `
     width: 100vw;
     height: 100%;
     padding: 2rem 4rem;
-`;
-
-export const Profile = styled.div `
-
+    background-color: #383838;
 `;

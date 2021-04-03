@@ -23,6 +23,7 @@ function Login () {
             
             const user = inputSearch.value;
             getUserApiGitHub(user).then(res => {
+                console.log(res)
                 history.push('/home')
                 dispatch({
                     type: 'LOGIN',
@@ -37,6 +38,7 @@ function Login () {
                     following_url: res.following_url,
                     organizations_url: res.organizations_url, 
                     starred_url: res.starred_url,
+                    repos_url: res.repos_url,
                     public_repos: res.public_repos,
                     public_gists: res.public_gists,
                     followers: res.followers,

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/navbar';
-import { ContainerMain, Profile } from './homeStyle';
+import Profile from '../../components/profile';
+import { ContainerMain } from './homeStyle';
 import { useSelector } from 'react-redux';
 
 
@@ -9,9 +10,7 @@ function Home () {
         <>
             <Navbar />
             <ContainerMain>
-                <Profile>
-                    <img src={useSelector((state)=>state.avatar_url)} alt="Imagem do perfil"/>
-                </Profile>
+                <Profile />
             </ContainerMain>
         </>
     );
