@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
-export const ContainerMain = styled.main `
-    margin-top: 3rem;
-`;
-
-export const FollowersContainer = styled.div `
+export const FollowContainer = styled.div `
     border-bottom: 1px solid #383838;
     padding-top: 1rem;
 `;
 
-export const FollowersH1 = styled.div `
+export const FollowH1 = styled.div `
     width: 100%;
     padding: 0.5rem 2rem;
-    font-size: 22px;
+    font-size: 1.5rem;
     font-weight: bolder;
 
     section {

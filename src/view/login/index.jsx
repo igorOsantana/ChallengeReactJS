@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContainerMain, IconGitHub, FormLogin, Feedback } from './loginStyle';
-import { getUserApiGitHub } from '../../config/apiGitHug';
+import { getUserApiGitHub } from '../../config/APIGitHub';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 

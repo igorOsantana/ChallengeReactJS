@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
-import { ContainerMain, ReposContainer, ReposH1, ReposInfo } from './reposStyle';
+import { ReposContainer, ReposH1, ReposInfo } from './reposStyle';
 import { useSelector } from 'react-redux';
-import { getReposUserApiGitHub } from '../../config/apiGitHug';
+import { getReposUserApiGitHub } from '../../config/APIGitHub';
 
 function Repos () {
     const user = useSelector(state => state.login);
@@ -21,10 +21,10 @@ function Repos () {
     return (
         <>
             <Navbar tab='Repositórios'/>
-            <ContainerMain className="container">
+            <main className="container">
                 {repos && repos.map(element => {
                     return (
-                        <ReposContainer>
+                        <ReposContainer key={element.id}>
                             <ReposH1>
                                 <div className="d-flex">
                                     <div></div>
@@ -43,7 +43,7 @@ function Repos () {
                         </ReposContainer>
                     )
                 })}
-            </ContainerMain>
+            </main>
         </>
     );
 }

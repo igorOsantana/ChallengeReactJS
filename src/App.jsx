@@ -8,8 +8,8 @@ import store from './store';
 import Login from './view/login';
 import Home from './view/home';
 import Repos from './view/repos';
-import Followers from './view/followers';
-import Following from './view/following';
+import Followers from './view/follow/followers';
+import Following from './view/follow/following';
 /* ===== /PAGES ===== */
 
 function App() {
