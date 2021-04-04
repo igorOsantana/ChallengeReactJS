@@ -9,42 +9,45 @@ function Login () {
     const dispatch = useDispatch();
     const history = useHistory();
     const [inputSearch, setInputSearch] = useState("");
+    const [errorEmptyField, setErrorEmptyField] = useState(false);
+    const [errorNotFoundUser, setErrorNotFoundUser] = useState(false);
 
     function formValidate () {
-        var inputSearch = document.getElementsByClassName('inputSearch')[0];
-        var message = document.getElementsByClassName('invalid-feedback')[0];
-
-        if (inputSearch.value === "" ) {
-            inputSearch.style.border = '2px solid #f00';
-            message.hidden = false;
+        if (inputSearch === "" ) {
+            setErrorEmptyField(true);
         } else {
-            inputSearch.style.border = 'none';
-            message.hidden = true;
-            
-            const user = inputSearch.value;
+            setErrorEmptyField(false);
+            const user = inputSearch;
+
             getUserApiGitHub(user).then(res => {
-                console.log(res)
-                history.push('/home')
-                dispatch({
-                    type: 'LOGIN',
-                    login: res.login,
-                    name: res.name,
-                    email: res.email,
-                    location: res.location,
-                    company: res.company,
-                    bio: res.bio,
-                    avatar_url: res.avatar_url, 
-                    followers_url: res.followers_url,
-                    following_url: res.following_url,
-                    organizations_url: res.organizations_url, 
-                    starred_url: res.starred_url,
-                    repos_url: res.repos_url,
-                    public_repos: res.public_repos,
-                    public_gists: res.public_gists,
-                    followers: res.followers,
-                    following: res.following 
-                });
-            }).catch(error => console.log(error))
+                if(res === 'ERROR'){
+                    setErrorNotFoundUser(true);
+                } else {
+                    setErrorNotFoundUser(false);
+                    history.push('/home');
+                    dispatch({
+                        type: 'LOGIN',
+                        login: res.login,
+                        name: res.name,
+                        email: res.email,
+                        location: res.location,
+                        company: res.company,
+                        bio: res.bio,
+                        avatar_url: res.avatar_url, 
+                        followers_url: res.followers_url,
+                        following_url: res.following_url,
+                        organizations_url: res.organizations_url, 
+                        starred_url: res.starred_url,
+                        repos_url: res.repos_url,
+                        public_repos: res.public_repos,
+                        public_gists: res.public_gists,
+                        followers: res.followers,
+                        following: res.following 
+                    });
+                }
+            }).catch(error => {
+                console.log('ERROR: ',error);
+            });
         }
     }
 
@@ -58,9 +61,20 @@ function Login () {
                 </svg>
             </IconGitHub>
             <FormLogin id="formSearch" >
-                <input id='userSearch' type="text" value={inputSearch} className="form-control mb-1 inputSearch" onChange={async (e)=>{setInputSearch(e.target.value)}} placeholder="Usuário" />
-                <Feedback className="invalid-feedback" hidden={true}>
+                <input 
+                    id='userSearch' 
+                    type="text" 
+                    value={inputSearch} 
+                    className="form-control mb-1 inputSearch" 
+                    onChange={async (e)=>{setInputSearch(e.target.value)}} 
+                    placeholder="Usuário"
+                    style={{border : errorEmptyField || errorNotFoundUser ? '2px solid #f00' : 'none'}}
+                />
+                <Feedback hidden={!errorEmptyField}>
                     Campo obrigatório
+                </Feedback>
+                <Feedback hidden={!errorNotFoundUser}>
+                    Usuário não encontrado
                 </Feedback>
                 <button type="button" className="btn btn-warning mt-2" form="formSearch" onClick={formValidate}>
                     ENTRAR

@@ -44,11 +44,15 @@ export const ProfileMain = styled.main `
 export const ProfileH1 = styled.div `
     width: 100%;
     padding: 0.5rem 2rem;
-    border-left: 2.5rem solid #FFCF3D;
-    border-radius: 15px;
     font-size: 32px;
     font-weight: bolder;
 
+    div > div {
+        width: 1.5rem;
+        border-right: 1rem solid #FFCF3D;
+        border-radius: 30px;
+        margin-right: 1rem;
+    }
     p {
         margin: 0px;
     }

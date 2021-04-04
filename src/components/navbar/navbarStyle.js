@@ -3,7 +3,13 @@ import styled from 'styled-components';
 export const ContainerMain = styled.nav `
     background-color: #1F1F1F;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        margin: 0 0 0 2rem;
+        font-size: 18px;
+    }
 `;
 
 export const Content = styled.div `

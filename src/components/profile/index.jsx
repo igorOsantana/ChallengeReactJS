@@ -33,14 +33,20 @@ function Profile () {
                 </ProfileHeader>
                 <ProfileMain>
                     <ProfileH1>
-                        <p>{useSelector(state => state.name).toUpperCase()}</p>
+                        <div className="d-flex">
+                            <div></div>
+                            <p>{useSelector(state => state.name).toUpperCase()}</p>
+                        </div>
                     </ProfileH1>
                     <ProfileInfo>
                         <p>{useSelector(state => state.email)}</p>
                         <p>{useSelector(state => state.location)}</p>
                     </ProfileInfo>
                     <ProfileH1>
-                        <p>BIO</p>
+                        <div className="d-flex">
+                            <div></div>
+                            <p>BIO</p>
+                        </div>
                     </ProfileH1>
                     <ProfileInfo>
                         <p>{useSelector(state => state.bio)}</p>

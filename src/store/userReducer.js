@@ -14,7 +14,7 @@ const INITIAL_STATE = {
     public_repos: 0,
     public_gists: 0,
     followers: 0,
-    following: 0
+    following: 0,
 };
 
 function userReducer (state = INITIAL_STATE, action) {

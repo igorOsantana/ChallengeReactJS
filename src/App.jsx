@@ -7,6 +7,9 @@ import store from './store';
 /* ===== PAGES ===== */
 import Login from './view/login';
 import Home from './view/home';
+import Repos from './view/repos';
+import Followers from './view/followers';
+import Following from './view/following';
 /* ===== /PAGES ===== */
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
         <GlobalStyle />
         <Route exact path = '/' component = {Login} />
         <Route exact path = '/home' component = {Home} />
+        <Route exact path = '/repos' component = {Repos} />
+        <Route exact path = '/followers' component = {Followers} />
+        <Route exact path = '/following' component = {Following} />
       </BrowserRouter>
     </Provider>
   );
