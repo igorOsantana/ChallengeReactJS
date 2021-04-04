@@ -28,4 +28,8 @@ export const ReposInfo = styled.div `
     margin-left: 4.5rem;
     margin-bottom: 1rem;
     font-size: 1rem;
+
+    p {
+        margin: 0px;
+    }
 `;

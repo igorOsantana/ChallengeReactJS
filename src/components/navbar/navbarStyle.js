@@ -15,7 +15,7 @@ export const ContainerMain = styled.nav `
 export const Content = styled.div `
     display: flex;
     justify-content: flex-end;
-    margin: 0 5rem;
+    margin: 0 3rem;
 
     @media(max-width: 768px) {
         justify-content: flex-start;
