@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
 import { ReposContainer, ReposH1, ReposInfo } from './reposStyle';
 import { useSelector } from 'react-redux';
-import { getReposUserApiGitHub } from '../../config/APIGitHub';
+import { getUserDataApiGitHub } from '../../config/APIGitHub';
 
 function Repos () {
     const user = useSelector(state => state.login);
-
     const [repos, setRepos] = useState();
 
     useEffect (()=> {
-        getReposUserApiGitHub(user).then(res => {
+        getUserDataApiGitHub(user, 'reposUrl').then(res => {
             setRepos(res);
         }).catch(error => {
             console.log('ERROR: ',error);

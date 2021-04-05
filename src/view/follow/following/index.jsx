@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../../components/navbar';
 import { FollowContainer, FollowH1 } from '../followStyle';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFollowingUserApiGitHub, ChangeUser } from '../../../config/APIGitHub';
+import { getUserDataApiGitHub, ChangeUser } from '../../../config/APIGitHub';
 import { Link } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ function Following () {
     const [following, setFollowing] = useState();
 
     useEffect (()=> {
-        getFollowingUserApiGitHub(user).then(res => {
+        getUserDataApiGitHub(user, 'followingUrl').then(res => {
             setFollowing(res);
         }).catch(error => {
             console.log('ERROR: ',error);

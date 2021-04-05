@@ -1,8 +1,9 @@
 import React from 'react';
 import GlobalStyle from './view/global';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 /* ===== PAGES ===== */
 import Login from './view/login';
@@ -15,14 +16,18 @@ import Following from './view/follow/following';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Route exact path = '/' component = {Login} />
-        <Route exact path = '/home' component = {Home} />
-        <Route exact path = '/repos' component = {Repos} />
-        <Route exact path = '/followers' component = {Followers} />
-        <Route exact path = '/following' component = {Following} />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Switch>
+            <Route exact path = '/' component = {Login} />
+            <Route path = '/home' component = {Home} />
+            <Route path = '/repos' component = {Repos} />
+            <Route path = '/followers' component = {Followers} />
+            <Route path = '/following' component = {Following} />
+          </Switch>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   );
 }

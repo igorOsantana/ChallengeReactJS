@@ -1,4 +1,4 @@
-const url = "https://api.github.com/users";
+const urlBase = "https://api.github.com/users";
 const client_id = "b5756535a4d6d83f81af";
 const client_secret = "1dc62225063061a1d4b5cc1725aa93496cfe6313";
 const token = "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";
@@ -11,9 +11,15 @@ const options = {
     cache: 'default'
 }
 
-export async function getUserApiGitHub(user) {
+export async function getUserDataApiGitHub(user, whichUrl) {
+    const urls = {
+        userUrl: `${urlBase}/${user}?client_id=${client_id}&client_secret=${client_secret}`,
+        reposUrl: `${urlBase}/${user}/repos?client_id=${client_id}&client_secret=${client_secret}`,
+        followerUrl: `${urlBase}/${user}/followers?client_id=${client_id}&client_secret=${client_secret}`,
+        followingUrl: `${urlBase}/${user}/following?client_id=${client_id}&client_secret=${client_secret}`
+    }
     const profileResponse = await fetch(
-        `${url}/${user}?client_id=${client_id}&client_secret=${client_secret}`,
+        urls[whichUrl],
         options
     ).then(response => {
         if(!response.ok) return 'ERROR';
@@ -24,48 +30,9 @@ export async function getUserApiGitHub(user) {
     return profileResponse;
 }
 
-export async function getReposUserApiGitHub(user) {
-    const reposResponse = await fetch(
-        `${url}/${user}/repos?client_id=${client_id}&client_secret=${client_secret}`,
-        options
-    ).then(response => {
-        if(!response.ok) return 'ERROR';
-        return response.json();
-    }).then(data => {
-        return data;
-    });
-    return reposResponse;
-}
-
-export async function getFollowersUserApiGitHub(user) {
-    const followersResponse = await fetch(
-        `${url}/${user}/followers?client_id=${client_id}&client_secret=${client_secret}`,
-        options
-    ).then(response => {
-        if(!response.ok) return 'ERROR';
-        return response.json();
-    }).then(data => {
-        return data;
-    });
-    return followersResponse;
-}
-
-export async function getFollowingUserApiGitHub(user) {
-    const followingResponse = await fetch(
-        `${url}/${user}/following?client_id=${client_id}&client_secret=${client_secret}`,
-        options
-    ).then(response => {
-        if(!response.ok) return 'ERROR';
-        return response.json();
-    }).then(data => {
-        return data;
-    });
-    return followingResponse;
-}
-
 export function ChangeUser(user, dispatch) {
     
-    getUserApiGitHub(user).then(response => {
+    getUserDataApiGitHub(user, 'userUrl').then(response => {
         dispatch({
             type: 'LOGIN',
             login: response.login,

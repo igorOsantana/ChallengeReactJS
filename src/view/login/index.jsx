@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ContainerMain, IconGitHub, FormLogin, Feedback } from './loginStyle';
-import { getUserApiGitHub } from '../../config/APIGitHub';
+import { getUserDataApiGitHub } from '../../config/APIGitHub';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ function Login () {
             setErrorEmptyField(false);
             const user = inputSearch;
 
-            getUserApiGitHub(user).then(res => {
+            getUserDataApiGitHub(user, 'userUrl').then(res => {
                 if(res === 'ERROR'){
                     setErrorNotFoundUser(true);
                 } else {
