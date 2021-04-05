@@ -1,7 +1,7 @@
 const urlBase = "https://api.github.com/users";
-const client_id = "b5756535a4d6d83f81af";
-const client_secret = "1dc62225063061a1d4b5cc1725aa93496cfe6313";
-const token = "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";
+const client_id = process.env.REACT_APP_APIGITHUB_CLIENT_ID;
+const client_secret = process.env.REACT_APP_APIGITHUB_CLIENT_SECRET;
+const token = process.env.REACT_APP_APIGITHUB_CLIENT_TOKEN;
 const options = {
     method: 'GET',
     headers: {
