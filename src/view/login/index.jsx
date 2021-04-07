@@ -18,10 +18,12 @@ function Login () {
     };
 
     function formValidate () {
+        setErrorNotFoundUser(false);
+        setErrorEmptyField(false);
+
         if (inputSearch === "" ) {
             setErrorEmptyField(true);
         } else {
-            setErrorEmptyField(false);
             const user = inputSearch;
 
             getUserDataApiGitHub(user, 'userUrl').then(res => {
