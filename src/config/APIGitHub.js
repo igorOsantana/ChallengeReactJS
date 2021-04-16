@@ -4,19 +4,19 @@ const client_secret = process.env.REACT_APP_APIGITHUB_CLIENT_SECRET;
 const token = process.env.REACT_APP_APIGITHUB_CLIENT_TOKEN;
 const options = {
     method: 'GET',
-    headers: {
-        authorization: `token ${token}`
-    },
+    //headers: {
+    //    authorization: `token ${token}`
+    //},
     mode: 'cors',
     cache: 'default'
 }
 
 export async function getUserDataApiGitHub(user, whichUrl) {
     const urls = {
-        userUrl: `${urlBase}/${user}?client_id=${client_id}&client_secret=${client_secret}`,
-        reposUrl: `${urlBase}/${user}/repos?client_id=${client_id}&client_secret=${client_secret}`,
-        followerUrl: `${urlBase}/${user}/followers?client_id=${client_id}&client_secret=${client_secret}`,
-        followingUrl: `${urlBase}/${user}/following?client_id=${client_id}&client_secret=${client_secret}`
+        userUrl: `${urlBase}/${user}`,//client_id=${client_id}&client_secret=${client_secret}`,
+        reposUrl: `${urlBase}/${user}/repos`,//client_id=${client_id}&client_secret=${client_secret}`,
+        followerUrl: `${urlBase}/${user}/followers`,//client_id=${client_id}&client_secret=${client_secret}`,
+        followingUrl: `${urlBase}/${user}/following`//client_id=${client_id}&client_secret=${client_secret}`
     }
     const profileResponse = await fetch(
         urls[whichUrl],
